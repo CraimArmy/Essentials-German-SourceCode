@@ -1,0 +1,23 @@
+name: Essentials-German
+version: 1.0
+author: CraimArmy
+
+main: de.craimarmy.main.Main
+
+commands:
+ fly:
+ heal:
+ gm:
+  aliases: [gamemode]
+ vanish:
+  aliases: [v]
+ msg:
+ day:
+ night:
+ chatclear:
+  aliases: [cc, clearchat]
+ tp:
+ tphere:
+ tptoggle:
+ god:
+  aliases: [godmode]
