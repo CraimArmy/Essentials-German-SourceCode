@@ -1,0 +1,75 @@
+package de.craimarmy.main;
+
+
+import java.util.ArrayList;
+
+
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import de.craimarmy.Commands.ChatClearCommand;
+import de.craimarmy.Commands.DayCommand;
+import de.craimarmy.Commands.FlyCommand;
+import de.craimarmy.Commands.GamemodeCommand;
+import de.craimarmy.Commands.GodCommand;
+import de.craimarmy.Commands.HealCommand;
+import de.craimarmy.Commands.NightCommand;
+import de.craimarmy.Commands.TpCommand;
+import de.craimarmy.Commands.TpToggleCommand;
+import de.craimarmy.Commands.TphereCommand;
+import de.craimarmy.Commands.VanishCommand;
+import de.craimarmy.Commands.msgCommand;
+import de.craimarmy.Listener.EntityDamage;
+
+public class Main extends JavaPlugin{
+	
+	public static String prefix = "§7[§6Essentials§7]";
+	
+	public ArrayList<String> vanish = new ArrayList<>(); 
+	
+	private static Main plugin;
+	
+	@Override
+	public void onEnable() {
+		
+		System.out.println("§aDas Plugin wurde erfolgreich geladen §cby CraimArmy");
+
+		plugin = this;
+		
+		
+		//Commands register
+		
+		
+		getCommand("fly").setExecutor(new FlyCommand());
+		getCommand("heal").setExecutor(new HealCommand());
+		getCommand("gm").setExecutor(new GamemodeCommand());
+		getCommand("vanish").setExecutor(new VanishCommand());
+		getCommand("msg").setExecutor(new msgCommand());
+		getCommand("day").setExecutor(new DayCommand());
+		getCommand("night").setExecutor(new NightCommand());
+		getCommand("chatclear").setExecutor(new ChatClearCommand());
+		getCommand("tp").setExecutor(new TpCommand());
+		getCommand("tphere").setExecutor(new TphereCommand());
+		getCommand("tptoggle").setExecutor(new TpToggleCommand());
+		getCommand("god").setExecutor(new GodCommand());
+		
+		
+		//Listener register
+		
+		PluginManager pm = Bukkit.getPluginManager();
+		pm.registerEvents(new EntityDamage(), this);
+		
+		
+	}
+
+	public void onDisable() {
+		System.out.println("§cDas Plugin wurde deaktiviert!");
+	}
+	
+	public static Main getPlugin() {
+		return plugin;
+		
+	}
+
+}
